@@ -1,1 +1,22 @@
 # TODO: Add configmap template for dc-app-01 
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "dc-app-01.fullname" . }}-config
+  labels:
+    {{- include "dc-app-01.labels" . | nindent 4 }}
+data:
+  # Redis connection configuration
+  REDIS_HOST: "{{ .Values.redis.host | default "redis" }}"
+  REDIS_PORT: "{{ .Values.redis.port | default "6379" }}"
+  REDIS_DB: "{{ .Values.redis.db | default "0" }}"
+  REDIS_USE_SSL: "{{ .Values.redis.useSsl | default "false" }}"
+  REDIS_USERNAME: "{{ .Values.redis.username | default "" }}"
+  
+  # Kafka connection configuration
+  KAFKA_BOOTSTRAP_SERVERS: "{{ .Values.kafka.bootstrapServers | default "kafka:9092" }}"
+  KAFKA_CLIENT_ID: "{{ .Values.kafka.clientId | default "app" }}"
+  KAFKA_SECURITY_PROTOCOL: "{{ .Values.kafka.securityProtocol | default "PLAINTEXT" }}"
+  KAFKA_AUTO_OFFSET_RESET: "{{ .Values.kafka.autoOffsetReset | default "earliest" }}"
+  KAFKA_GROUP_ID: "{{ .Values.kafka.groupId | default "consumers" }}" 

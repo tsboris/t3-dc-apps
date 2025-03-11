@@ -24,3 +24,7 @@ command:
 service:
   type: ClusterIP
   port: 80 
+
+# Environment-specific configurations (redis, kafka) have been moved to:
+# - values-dev.yaml: Development environment configuration
+# - values-qa.yaml: QA environment configuration 
