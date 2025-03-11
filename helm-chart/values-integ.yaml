@@ -1,0 +1,18 @@
+# Development environment specific values for dc-app-01
+
+# Redis connection configuration for development
+redis:
+  host: "redis-dev.example.com"
+  port: "6379"
+  db: "0"
+  useSsl: "false"
+  username: "dev-user"
+  # password will be provided by a Secret, not in ConfigMap
+
+# Kafka connection configuration for development
+kafka:
+  bootstrapServers: "kafka-dev.example.com:9092"
+  clientId: "app-dev"
+  securityProtocol: "PLAINTEXT"
+  autoOffsetReset: "earliest"
+  groupId: "consumers-dev" 
