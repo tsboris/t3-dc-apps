@@ -15,4 +15,4 @@ kafka:
   clientId: "app-dev"
   securityProtocol: "PLAINTEXT"
   autoOffsetReset: "earliest"
-  groupId: "app-consumers-dev" 
+  groupId: "consumers-dev" 
